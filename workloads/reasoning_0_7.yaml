@@ -1,0 +1,26 @@
+# Reasoning — 0.7 QPS constant, 50/50 crit/shed
+# Moderate input (lognormal mu=6.66, ~780 tokens), huge output (lognormal mu=8.73, ~6200 mean)
+# Source: inference-perf workload-catalog/reasoning
+# 2 instances Qwen3-14B H100 TP=1, estimated capacity ~0.8 req/s
+
+version: "2"
+seed: 42
+category: language
+aggregate_rate: 0.7
+num_requests: 700
+
+clients:
+  - id: "critical"
+    slo_class: "critical"
+    rate_fraction: 0.50
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 6.6604, sigma: 0.7033, min: 100, max: 5000}}
+    output_distribution: {type: lognormal, params: {mu: 8.7337, sigma: 0.712, min: 500, max: 32000}}
+  - id: "sheddable"
+    slo_class: "sheddable"
+    rate_fraction: 0.50
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 6.6604, sigma: 0.7033, min: 100, max: 5000}}
+    output_distribution: {type: lognormal, params: {mu: 8.7337, sigma: 0.712, min: 500, max: 32000}}

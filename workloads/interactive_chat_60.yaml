@@ -1,0 +1,26 @@
+# Interactive chat — 22 QPS constant, 30/70 crit/shed
+# Short input (lognormal mu=3.66, ~39 tokens mean), moderate output (mean=300)
+# Source: inference-perf workload-catalog/interactive-chat
+# 2 instances Qwen3-14B H100 TP=1, estimated capacity ~17 req/s
+
+version: "2"
+seed: 42
+category: language
+aggregate_rate: 60
+num_requests: 36000
+
+clients:
+  - id: "critical"
+    slo_class: "critical"
+    rate_fraction: 0.80
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 3.6647, sigma: 0.7033, min: 10, max: 1000}}
+    output_distribution: {type: gaussian, params: {mean: 300, std_dev: 150, min: 10, max: 1000}}
+  - id: "sheddable"
+    slo_class: "sheddable"
+    rate_fraction: 0.20
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 3.6647, sigma: 0.7033, min: 10, max: 1000}}
+    output_distribution: {type: gaussian, params: {mean: 300, std_dev: 150, min: 10, max: 1000}}

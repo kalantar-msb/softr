@@ -1,0 +1,26 @@
+# Code generation — 16 QPS constant, 30/70 crit/shed
+# Large input (lognormal mu=7.07, ~1176 tokens mean), moderate output (lognormal mu=5.27, ~195 mean)
+# Source: inference-perf workload-catalog/code-generation
+# 2 instances Qwen3-14B H100 TP=1, estimated capacity ~15-25 req/s
+
+version: "2"
+seed: 42
+category: language
+aggregate_rate: 16
+num_requests: 9600
+
+clients:
+  - id: "critical"
+    slo_class: "critical"
+    rate_fraction: 0.30
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 7.0659, sigma: 0.7033, min: 100, max: 10000}}
+    output_distribution: {type: lognormal, params: {mu: 5.2711, sigma: 1.2498, min: 50, max: 10000}}
+  - id: "sheddable"
+    slo_class: "sheddable"
+    rate_fraction: 0.70
+    streaming: true
+    arrival: {process: constant}
+    input_distribution: {type: lognormal, params: {mu: 7.0659, sigma: 0.7033, min: 100, max: 10000}}
+    output_distribution: {type: lognormal, params: {mu: 5.2711, sigma: 1.2498, min: 50, max: 10000}}

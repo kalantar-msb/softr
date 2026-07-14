@@ -1,0 +1,430 @@
+time="2026-06-12T11:31:47-04:00" level=warning msg="Finding default values of TP for model=qwen/qwen3-14b"
+time="2026-06-12T11:31:47-04:00" level=warning msg="Using default tp=1"
+time="2026-06-12T11:31:47-04:00" level=warning msg="Finding default values of hardware for model=qwen/qwen3-14b"
+time="2026-06-12T11:31:47-04:00" level=warning msg="Using default GPU=H100"
+time="2026-06-12T11:31:47-04:00" level=warning msg="Finding default values of vLLM version for model=qwen/qwen3-14b"
+time="2026-06-12T11:31:47-04:00" level=warning msg="Using default vLLM version=vllm/vllm-openai:v0.11.0"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 51170796] preemption: evicting request_909 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 51289835] preemption: evicting request_909 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 53133207] preemption: evicting request_937 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 53366155] preemption: evicting request_939 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 53814285] preemption: evicting request_941 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 54336858] preemption: evicting request_944 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 54410453] preemption: evicting request_941 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 54844145] preemption: evicting request_972 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 55342989] preemption: evicting request_946 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 55420203] preemption: evicting request_949 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 55681067] preemption: evicting request_949 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56034836] preemption: evicting request_966 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56153388] preemption: evicting request_971 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56190223] preemption: evicting request_969 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56382038] preemption: evicting request_971 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56610458] preemption: evicting request_974 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 56856675] preemption: evicting request_980 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 58249013] preemption: evicting request_996 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 58965535] preemption: evicting request_1019 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 59370004] preemption: evicting request_1016 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 59800702] preemption: evicting request_1024 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 59882659] preemption: evicting request_1027 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 60035725] preemption: evicting request_1030 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 60146162] preemption: evicting request_1027 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 60947167] preemption: evicting request_1072 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 61111279] preemption: evicting request_1078 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 61582579] preemption: evicting request_1043 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 62344251] preemption: evicting request_1057 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 62872446] preemption: evicting request_1060 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 63290917] preemption: evicting request_1108 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 63491184] preemption: evicting request_1128 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 63698931] preemption: evicting request_1093 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 64449201] preemption: evicting request_1096 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 64601244] preemption: evicting request_1099 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 65105886] preemption: evicting request_1113 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 65262583] preemption: evicting request_1119 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 65454377] preemption: evicting request_1127 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 65564908] preemption: evicting request_1124 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 65798353] preemption: evicting request_1133 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 66178983] preemption: evicting request_1145 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 66297669] preemption: evicting request_1152 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 66673268] preemption: evicting request_1158 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 66992681] preemption: evicting request_1172 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 67149116] preemption: evicting request_1172 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 67305038] preemption: evicting request_1172 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 68690798] preemption: evicting request_1161 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 68920004] preemption: evicting request_1161 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 69161905] preemption: evicting request_1176 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 69539269] preemption: evicting request_1176 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 70171040] preemption: evicting request_1176 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 70461980] preemption: evicting request_1198 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 70498787] preemption: evicting request_1192 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 70617038] preemption: evicting request_1205 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 71642402] preemption: evicting request_1200 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 72647575] preemption: evicting request_1226 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 72868465] preemption: evicting request_1223 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 73052493] preemption: evicting request_1220 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 73248011] preemption: evicting request_1229 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 73469908] preemption: evicting request_1229 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 73696625] preemption: evicting request_1245 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 74177035] preemption: evicting request_1278 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 74254263] preemption: evicting request_1278 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 74673113] preemption: evicting request_1298 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 74918683] preemption: evicting request_1237 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 75418319] preemption: evicting request_1249 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 75718897] preemption: evicting request_1249 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 76065301] preemption: evicting request_1254 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 76283068] preemption: evicting request_1260 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 76860424] preemption: evicting request_1271 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 78503633] preemption: evicting request_1348 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 79073819] preemption: evicting request_1284 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 79448205] preemption: evicting request_1287 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 79566494] preemption: evicting request_1290 to make room"
+time="2026-06-12T11:31:49-04:00" level=warning msg="[tick 79944642] preemption: evicting request_1296 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 80739736] preemption: evicting request_1319 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 80858550] preemption: evicting request_1319 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 81066355] preemption: evicting request_1395 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 81217922] preemption: evicting request_1395 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 81373331] preemption: evicting request_1402 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 81747681] preemption: evicting request_1326 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 81977606] preemption: evicting request_1326 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 82671896] preemption: evicting request_1331 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 82835035] preemption: evicting request_1340 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 83044068] preemption: evicting request_1349 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 83478827] preemption: evicting request_1360 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 83677380] preemption: evicting request_1363 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 83930700] preemption: evicting request_1475 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 84077852] preemption: evicting request_1468 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 85261419] preemption: evicting request_1482 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 85408574] preemption: evicting request_1475 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 85526855] preemption: evicting request_1488 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 86018547] preemption: evicting request_1366 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 86780913] preemption: evicting request_1379 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 87074994] preemption: evicting request_1376 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 87459661] preemption: evicting request_1384 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 88015416] preemption: evicting request_1404 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 88257046] preemption: evicting request_1410 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 88534870] preemption: evicting request_1495 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 88831526] preemption: evicting request_1495 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 88949429] preemption: evicting request_1508 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89133261] preemption: evicting request_1502 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89251944] preemption: evicting request_1508 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89498902] preemption: evicting request_1548 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89535682] preemption: evicting request_1542 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89806168] preemption: evicting request_1568 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 89932685] preemption: evicting request_1417 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 90206827] preemption: evicting request_1420 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 90674256] preemption: evicting request_1443 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 90828792] preemption: evicting request_1449 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 92085162] preemption: evicting request_1487 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 93063510] preemption: evicting request_1648 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 93377885] preemption: evicting request_1668 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 94040386] preemption: evicting request_1534 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 94298119] preemption: evicting request_1531 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 94416466] preemption: evicting request_1537 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 94918111] preemption: evicting request_1546 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 95340310] preemption: evicting request_1554 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 95857912] preemption: evicting request_1702 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 96059898] preemption: evicting request_1715 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 96142338] preemption: evicting request_1715 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 96380989] preemption: evicting request_1563 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 96604532] preemption: evicting request_1563 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 96953213] preemption: evicting request_1574 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 97072456] preemption: evicting request_1580 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 97293324] preemption: evicting request_1577 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 97564479] preemption: evicting request_1583 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 97965038] preemption: evicting request_1600 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 98373784] preemption: evicting request_1603 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 98447399] preemption: evicting request_1600 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 99543883] preemption: evicting request_1785 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 99820031] preemption: evicting request_1616 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 99901653] preemption: evicting request_1619 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 100197527] preemption: evicting request_1619 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 100356594] preemption: evicting request_1630 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 101456441] preemption: evicting request_1633 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 101701741] preemption: evicting request_1639 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 102038633] preemption: evicting request_1641 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 102766268] preemption: evicting request_1835 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 102957541] preemption: evicting request_1656 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 103146523] preemption: evicting request_1656 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 103550659] preemption: evicting request_1835 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 103676629] preemption: evicting request_1664 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 104123317] preemption: evicting request_1664 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 104322394] preemption: evicting request_1681 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 105129878] preemption: evicting request_1696 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 105469460] preemption: evicting request_1699 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 106923605] preemption: evicting request_1709 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 107127095] preemption: evicting request_1720 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 107421415] preemption: evicting request_1717 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 107658264] preemption: evicting request_1726 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 108050760] preemption: evicting request_1731 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 108525935] preemption: evicting request_1743 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 110274507] preemption: evicting request_1771 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 110393750] preemption: evicting request_1780 to make room"
+time="2026-06-12T11:31:50-04:00" level=warning msg="[tick 110548820] preemption: evicting request_1789 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 145066045] preemption: evicting request_2157 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 145221834] preemption: evicting request_2163 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 145376943] preemption: evicting request_2166 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 145621477] preemption: evicting request_2174 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 145829682] preemption: evicting request_2180 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 146017582] preemption: evicting request_2180 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 148753535] preemption: evicting request_2196 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 149320683] preemption: evicting request_2210 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 149439121] preemption: evicting request_2213 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 149777299] preemption: evicting request_2216 to make room"
+time="2026-06-12T11:31:51-04:00" level=warning msg="[tick 150015073] preemption: evicting request_2221 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 150097516] preemption: evicting request_2221 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 158068183] preemption: evicting request_2286 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 158557200] preemption: evicting request_2297 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 181465605] preemption: evicting request_2467 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 182612037] preemption: evicting request_2467 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 182930079] preemption: evicting request_2476 to make room"
+time="2026-06-12T11:31:52-04:00" level=warning msg="[tick 183427867] preemption: evicting request_2481 to make room"
+time="2026-06-12T11:31:53-04:00" level=warning msg="[tick 188101065] preemption: evicting request_2501 to make room"
+time="2026-06-12T11:31:53-04:00" level=warning msg="[tick 206309337] preemption: evicting request_2653 to make room"
+time="2026-06-12T11:31:54-04:00" level=warning msg="[tick 222941780] preemption: evicting request_2814 to make room"
+time="2026-06-12T11:31:54-04:00" level=warning msg="[tick 223023915] preemption: evicting request_2814 to make room"
+time="2026-06-12T11:31:54-04:00" level=warning msg="[tick 227705381] preemption: evicting request_2837 to make room"
+time="2026-06-12T11:31:54-04:00" level=warning msg="[tick 228097971] preemption: evicting request_2846 to make room"
+time="2026-06-12T11:31:54-04:00" level=warning msg="[tick 228773389] preemption: evicting request_2851 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 280101461] preemption: evicting request_3459 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 280700869] preemption: evicting request_3461 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 282422775] preemption: evicting request_3506 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 282689400] preemption: evicting request_3506 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 283372256] preemption: evicting request_3517 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 283739871] preemption: evicting request_3514 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 284034070] preemption: evicting request_3511 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 284524720] preemption: evicting request_3520 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 286625553] preemption: evicting request_3526 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 286742733] preemption: evicting request_3526 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 287185343] preemption: evicting request_3549 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 287427889] preemption: evicting request_3560 to make room"
+time="2026-06-12T11:31:55-04:00" level=warning msg="[tick 289517638] preemption: evicting request_3614 to make room"
+time="2026-06-12T11:31:56-04:00" level=warning msg="[tick 315291844] preemption: evicting request_3849 to make room"
+time="2026-06-12T11:31:57-04:00" level=warning msg="[tick 335335952] preemption: evicting request_4060 to make room"
+time="2026-06-12T11:31:58-04:00" level=warning msg="[tick 369183097] preemption: evicting request_4389 to make room"
+time="2026-06-12T11:31:58-04:00" level=warning msg="[tick 389328303] preemption: evicting request_4594 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 389658880] preemption: evicting request_4591 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 394747618] preemption: evicting request_7062 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 395122226] preemption: evicting request_7062 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 395762521] preemption: evicting request_7088 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 396211042] preemption: evicting request_7088 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 398948793] preemption: evicting request_4641 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 399323370] preemption: evicting request_4647 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 399670057] preemption: evicting request_4653 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 406724779] preemption: evicting request_4724 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 407133055] preemption: evicting request_4724 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 407286573] preemption: evicting request_4727 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 407779396] preemption: evicting request_4733 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 408015417] preemption: evicting request_4741 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 408441991] preemption: evicting request_4747 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 408560502] preemption: evicting request_4747 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 411180703] preemption: evicting request_7352 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 411466045] preemption: evicting request_7378 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 411686208] preemption: evicting request_7372 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 412305038] preemption: evicting request_4756 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 412747525] preemption: evicting request_4756 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 413513226] preemption: evicting request_4779 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 413715276] preemption: evicting request_4781 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 416381235] preemption: evicting request_4806 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 416462646] preemption: evicting request_4811 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 416903354] preemption: evicting request_4809 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 417197297] preemption: evicting request_4806 to make room"
+time="2026-06-12T11:31:59-04:00" level=warning msg="[tick 417315347] preemption: evicting request_4811 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 489528389] preemption: evicting request_5700 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 498552670] preemption: evicting request_5764 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 504388168] preemption: evicting request_5809 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 507372018] preemption: evicting request_5833 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 507702969] preemption: evicting request_5830 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 508051219] preemption: evicting request_5841 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 508532431] preemption: evicting request_5844 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 508814285] preemption: evicting request_5853 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 510912512] preemption: evicting request_5893 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 514625780] preemption: evicting request_5947 to make room"
+time="2026-06-12T11:32:02-04:00" level=warning msg="[tick 518206777] preemption: evicting request_5984 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 518582167] preemption: evicting request_5984 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 519026119] preemption: evicting request_5984 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 519370985] preemption: evicting request_5993 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 522106402] preemption: evicting request_6021 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 522343093] preemption: evicting request_6030 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 522527198] preemption: evicting request_6027 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 534798662] preemption: evicting request_6137 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 535786167] preemption: evicting request_6154 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 547201380] preemption: evicting request_6247 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 547351872] preemption: evicting request_6247 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 547719667] preemption: evicting request_6244 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 547984393] preemption: evicting request_6247 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 548350646] preemption: evicting request_6264 to make room"
+time="2026-06-12T11:32:03-04:00" level=warning msg="[tick 548952117] preemption: evicting request_6270 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 552393989] preemption: evicting request_6301 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 552579564] preemption: evicting request_6301 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 552917625] preemption: evicting request_6304 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 553175625] preemption: evicting request_6304 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 553441600] preemption: evicting request_6307 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 553916174] preemption: evicting request_6310 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 558360416] preemption: evicting request_6347 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 568387348] preemption: evicting request_6553 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 568913205] preemption: evicting request_6559 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 569027241] preemption: evicting request_6561 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 574688780] preemption: evicting request_6681 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 574872770] preemption: evicting request_6679 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 575534814] preemption: evicting request_6681 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 575534814] preemption: evicting request_6679 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 575651530] preemption: evicting request_6687 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 575962211] preemption: evicting request_6690 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 576794053] preemption: evicting request_6707 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 578150582] preemption: evicting request_6744 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 578793543] preemption: evicting request_6756 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 582665004] preemption: evicting request_6827 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 582665004] preemption: evicting request_6824 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 582857470] preemption: evicting request_6830 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 583192147] preemption: evicting request_6839 to make room"
+time="2026-06-12T11:32:04-04:00" level=warning msg="[tick 583538592] preemption: evicting request_6850 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 591171356] preemption: evicting request_6953 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 591253734] preemption: evicting request_6953 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 591335098] preemption: evicting request_6956 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 591492590] preemption: evicting request_6959 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 592409305] preemption: evicting request_6956 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 592814064] preemption: evicting request_6956 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 593482375] preemption: evicting request_6959 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 594280216] preemption: evicting request_6984 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 596112502] preemption: evicting request_7007 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 596558999] preemption: evicting request_7030 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 599325100] preemption: evicting request_7121 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 599628051] preemption: evicting request_7124 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 599710082] preemption: evicting request_7124 to make room"
+time="2026-06-12T11:32:05-04:00" level=warning msg="[tick 602256308] preemption: evicting request_7196 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 701919748] preemption: evicting request_9203 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 705493636] preemption: evicting request_9263 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 705730072] preemption: evicting request_9269 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 705975692] preemption: evicting request_9274 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 707203014] preemption: evicting request_9274 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 709060553] preemption: evicting request_9340 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 709186933] preemption: evicting request_9346 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 713446214] preemption: evicting request_9386 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 713630005] preemption: evicting request_9383 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 713747989] preemption: evicting request_9391 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 714038024] preemption: evicting request_9403 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 714578088] preemption: evicting request_9409 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 714614856] preemption: evicting request_9406 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 714874367] preemption: evicting request_9409 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 714947886] preemption: evicting request_9406 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 715247444] preemption: evicting request_9411 to make room"
+time="2026-06-12T11:32:08-04:00" level=warning msg="[tick 719780025] preemption: evicting request_9446 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 720255594] preemption: evicting request_9451 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 720659177] preemption: evicting request_9449 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 720769315] preemption: evicting request_9446 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 721204591] preemption: evicting request_9466 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 721477794] preemption: evicting request_9471 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 721813220] preemption: evicting request_9471 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 722308212] preemption: evicting request_9477 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 722757210] preemption: evicting request_9477 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 726621821] preemption: evicting request_9557 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 726942600] preemption: evicting request_9560 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 731063696] preemption: evicting request_9620 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 731181915] preemption: evicting request_9623 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 731418116] preemption: evicting request_9634 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 738125548] preemption: evicting request_9769 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 742399831] preemption: evicting request_9840 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 743223896] preemption: evicting request_9846 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 746078035] preemption: evicting request_9880 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 746203472] preemption: evicting request_9889 to make room"
+time="2026-06-12T11:32:09-04:00" level=warning msg="[tick 746285280] preemption: evicting request_9894 to make room"
+=== Simulation Metrics ===
+{
+  "instance_id": "instance_0",
+  "completed_requests": 5000,
+  "still_queued": 0,
+  "still_running": 0,
+  "injected_requests": 5000,
+  "total_input_tokens": 7432255,
+  "total_output_tokens": 2081337,
+  "vllm_estimated_duration_s": 906.679763,
+  "responses_per_sec": 5.514626226415511,
+  "tokens_per_sec": 2295.559121241796,
+  "e2e_mean_ms": 101542.5784084,
+  "e2e_p90_ms": 212391.1843,
+  "e2e_p95_ms": 222592.75319999998,
+  "e2e_p99_ms": 272999.36104999995,
+  "ttft_mean_ms": 87769.4489652,
+  "ttft_p90_ms": 202858.30359999998,
+  "ttft_p95_ms": 204324.6666,
+  "ttft_p99_ms": 206491.52254,
+  "itl_mean_ms": 33.16502196705063,
+  "itl_p90_ms": 40.139,
+  "itl_p95_ms": 42.093,
+  "itl_p99_ms": 44.335,
+  "scheduling_delay_p99_ms": 206411.24203,
+  "preemption_count": 45,
+  "dropped_unservable": 0,
+  "length_capped_requests": 0,
+  "timed_out_requests": 0
+}
+=== Simulation Metrics ===
+{
+  "instance_id": "instance_1",
+  "completed_requests": 5000,
+  "still_queued": 0,
+  "still_running": 0,
+  "injected_requests": 5000,
+  "total_input_tokens": 7607845,
+  "total_output_tokens": 2107071,
+  "vllm_estimated_duration_s": 874.460468,
+  "responses_per_sec": 5.717811362514332,
+  "tokens_per_sec": 2409.566901084887,
+  "e2e_mean_ms": 102958.1886946,
+  "e2e_p90_ms": 212464.6771,
+  "e2e_p95_ms": 222411.43145,
+  "e2e_p99_ms": 270758.2876,
+  "ttft_mean_ms": 88151.4469574,
+  "ttft_p90_ms": 202967.6356,
+  "ttft_p95_ms": 204436.6331,
+  "ttft_p99_ms": 206592.29137,
+  "itl_mean_ms": 35.217565765380904,
+  "itl_p90_ms": 42.361,
+  "itl_p95_ms": 44.013,
+  "itl_p99_ms": 45.216,
+  "scheduling_delay_p99_ms": 206539.33799,
+  "preemption_count": 278,
+  "dropped_unservable": 0,
+  "length_capped_requests": 0,
+  "timed_out_requests": 0
+}
+=== Simulation Metrics ===
+{
+  "instance_id": "cluster",
+  "completed_requests": 10000,
+  "still_queued": 0,
+  "still_running": 0,
+  "injected_requests": 10000,
+  "total_input_tokens": 15040100,
+  "total_output_tokens": 4188408,
+  "vllm_estimated_duration_s": 906.679763,
+  "responses_per_sec": 11.029252452831022,
+  "tokens_per_sec": 4619.500920745708,
+  "e2e_mean_ms": 102250.3835515,
+  "e2e_p90_ms": 212429.2976,
+  "e2e_p95_ms": 222509.39304999998,
+  "e2e_p99_ms": 271580.02245,
+  "ttft_mean_ms": 87960.4479613,
+  "ttft_p90_ms": 202915.33070000002,
+  "ttft_p95_ms": 204391.63785,
+  "ttft_p99_ms": 206529.11461000002,
+  "itl_mean_ms": 34.197614474699456,
+  "itl_p90_ms": 41.36,
+  "itl_p95_ms": 43.19,
+  "itl_p99_ms": 45.009,
+  "scheduling_delay_p99_ms": 206475.17335,
+  "preemption_count": 323,
+  "dropped_unservable": 0,
+  "length_capped_requests": 0,
+  "timed_out_requests": 0
+}
+=== KV Cache Metrics ===
+Preemption Rate: 0.0323
+Cache Hit Rate: 0.0178
+KV Thrashing Rate: 0.0000
+=== Per-SLO Metrics ===
+  critical:
+    TTFT: mean=2117910.90 p99=5389388.39 (n=3000)
+    E2E:  mean=16904854.47 p99=130929030.43 (n=3000)
+  sheddable:
+    TTFT: mean=124750106.70 p99=206849771.76 (n=7000)
+    E2E:  mean=138827038.87 p99=280705345.55 (n=7000)

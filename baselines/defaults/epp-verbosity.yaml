@@ -1,0 +1,8 @@
+# Workaround: bump EPP log verbosity for diagnosability.
+# See docs/troubleshooting.md "Increasing logging verbosity / EPP".
+# scenario[0].name is realigned to the experiment baseline at merge time.
+scenario:
+- name: defaults
+  router:
+    epp:
+      verbosity: "3"
