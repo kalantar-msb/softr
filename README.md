@@ -138,6 +138,20 @@ The ceiling policy is the only variable. See `config.md` for full YAML configs.
 
 Best on prefill-heavy workloads with meaningful sheddable fraction (≥50%). Minimal effect on decode-heavy workloads where KV saturation pins at ≥1.0 permanently.
 
+Per-run raw data is in `results/` (36 files: `baseline_*` and `treatment_*`, three seeds each — `s42`, `s43`, `s44` — per workload). The delta figures above are averages over all three seeds.
+
+### Reproducing the Simulation
+
+```bash
+# Re-run the BLIS simulation (baseline + treatment × 3 seeds):
+bash scripts/run.sh
+
+# Print the comparison table from existing results:
+bash scripts/compare.sh
+```
+
+`scripts/run.sh` requires a working [BLIS](https://github.com/inference-sim/inference-sim) installation. The `llm-d-router` submodule (commit `5f4e762f`, v0.9.0) provides the component source used in these runs. To re-run against a different router version, update the submodule pointer and re-bootstrap with [`sim2real-bootstrap`](https://github.com/inference-sim/sim2real).
+
 ## Code References
 
 Verified against llm-d-router v0.9.0 (submodule commit `5f4e762f`).
