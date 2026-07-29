@@ -1,2 +1,0 @@
-# Test
-Strategist test file
