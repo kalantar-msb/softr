@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"math"
+	"sync"
 	"sync/atomic"
 
 	"github.com/llm-d/llm-d-router/pkg/epp/framework/interface/plugin"
@@ -12,7 +13,10 @@ import (
 const PolicyType = "soft-reflective-ceiling-policy"
 
 // policy holds per-band tick counters for proportional dispatch.
+// mu protects the counters slice during growth; individual counter
+// operations use atomic.Int64 and do not need the mutex.
 type policy struct {
+	mu       sync.Mutex
 	counters []atomic.Int64
 }
 
@@ -42,10 +46,14 @@ func (w *wrappedPolicy) ComputeLimit(ctx context.Context, saturation float64, pr
 		return ceilings
 	}
 
-	// Grow counters if new bands appear
+	// Grow counters if new bands appear.
+	// The mutex protects the slice header (len/cap/ptr) during append;
+	// subsequent atomic operations on stable elements are lock-free.
+	w.p.mu.Lock()
 	for len(w.p.counters) < n {
 		w.p.counters = append(w.p.counters, atomic.Int64{})
 	}
+	w.p.mu.Unlock()
 
 	for i := range priorities {
 		if i == 0 {
