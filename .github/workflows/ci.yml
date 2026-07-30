@@ -1,0 +1,134 @@
+# CI workflow for the soft-reflective ceiling plugin.
+#
+# The plugin sources live in algorithms/ and are designed to be embedded
+# into llm-d-router (a separate repo, tracked as a submodule). There is
+# intentionally no top-level go.mod for the plugin itself.
+#
+# This workflow bootstraps a minimal Go module workspace and stubs out the
+# llm-d-router dependency so the plugin can be compiled and vet-checked in
+# isolation, catching build regressions before they reach the integration step.
+#
+# Key design: build/vet steps FAIL the job on errors (no || echo suppression).
+# Stubs for llm-d-router interfaces allow `go build ./...` to succeed cleanly.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-vet:
+    name: Build and vet Go plugin
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          cache: false
+
+      - name: Confirm plugin files present
+        run: |
+          test -f algorithms/soft_reflective_ceiling.go || \
+            (echo "ERROR: soft_reflective_ceiling.go missing" && exit 1)
+          test -f algorithms/constant_ceiling_control.go || \
+            (echo "ERROR: constant_ceiling_control.go missing" && exit 1)
+          echo "Plugin files present: OK"
+
+      - name: Bootstrap module with interface stubs
+        # Create a stub module for llm-d-router interfaces so `go build ./...`
+        # compiles cleanly without the full upstream module.
+        # Using stubs (not || echo) means build failures are REAL failures.
+        run: |
+          STUB_ROOT=/tmp/llm-d-stub
+          PLUGIN_DIR=/tmp/plugin-main
+
+          mkdir -p "$STUB_ROOT/pkg/epp/framework/interface/plugin"
+          mkdir -p "$STUB_ROOT/pkg/epp/framework/plugins/flowcontrol/usagelimits"
+
+          cat > "$STUB_ROOT/pkg/epp/framework/interface/plugin/plugin.go" <<'GOEOF'
+          package plugin
+
+          import "context"
+
+          type TypedName struct {
+            Type string
+            Name string
+          }
+
+          type Handle interface{}
+
+          type Plugin interface {
+            TypedName() TypedName
+            ComputeLimit(ctx context.Context, saturation float64, priorities []int) []float64
+          }
+          GOEOF
+
+          cat > "$STUB_ROOT/pkg/epp/framework/plugins/flowcontrol/usagelimits/usagelimits.go" <<'GOEOF'
+          package usagelimits
+
+          import (
+            "context"
+            "github.com/llm-d/llm-d-router/pkg/epp/framework/interface/plugin"
+          )
+
+          type policyFunc struct {
+            name string
+            fn   func(context.Context, float64, []int) []float64
+          }
+
+          func (p *policyFunc) TypedName() plugin.TypedName {
+            return plugin.TypedName{Type: "policy-func", Name: p.name}
+          }
+
+          func (p *policyFunc) ComputeLimit(ctx context.Context, sat float64, prios []int) []float64 {
+            return p.fn(ctx, sat, prios)
+          }
+
+          func NewPolicyFunc(name string, fn func(context.Context, float64, []int) []float64) plugin.Plugin {
+            return &policyFunc{name: name, fn: fn}
+          }
+          GOEOF
+
+          printf 'module github.com/llm-d/llm-d-router\n\ngo 1.23\n' > "$STUB_ROOT/go.mod"
+
+          mkdir -p "$PLUGIN_DIR"
+          cp algorithms/*.go "$PLUGIN_DIR/"
+          printf 'module soft_reflective_ceiling_check\n\ngo 1.23\n\nrequire github.com/llm-d/llm-d-router v0.0.0\n\nreplace github.com/llm-d/llm-d-router => /tmp/llm-d-stub\n' > "$PLUGIN_DIR/go.mod"
+
+          cd "$PLUGIN_DIR" && go mod tidy
+
+      - name: Build
+        # Fails the job on compilation errors — no || echo suppression.
+        run: |
+          cd /tmp/plugin-main
+          go build ./...
+          echo "Build: OK"
+
+      - name: Vet
+        # Fails the job on vet violations — no || echo suppression.
+        run: |
+          cd /tmp/plugin-main
+          go vet ./...
+          echo "Vet: OK"
+
+      - name: Test (if test files exist)
+        # Run tests when present; skip with informational message when absent.
+        # See issues #24 and #51 for adding unit tests and a coverage gate.
+        run: |
+          cd /tmp/plugin-main
+          TEST_FILES=$(ls *_test.go 2>/dev/null || true)
+          if [ -n "$TEST_FILES" ]; then
+            go test -v -count=1 ./...
+          else
+            echo "No test files found — skipping (tracked in #24 and #51)"
+          fi
