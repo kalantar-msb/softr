@@ -77,15 +77,18 @@ func TestComputeLimit_ZeroSaturationAllOpen(t *testing.T) {
 	}
 }
 
-// TestComputeLimit_ProportionalGating verifies that at mid-saturation,
+// TestComputeLimit_ProportionalGating verifies that at high saturation,
 // the proportional gating produces some open and some closed ticks over
 // many calls (i.e., neither always-0 nor always-1).
+// With sat=0.75 and 3 bands, band 1 has reflective ceiling 0.625.
+// Since sat(0.75) > ceiling(0.625), proportional gating applies.
+// period = round(0.75/(0.25+ε)) ≈ 3, so band opens 1 in 3 ticks.
 func TestComputeLimit_ProportionalGating(t *testing.T) {
 	w := newWrappedPolicy("test")
-	sat := 0.5 // mid saturation — band 1 should be gated proportionally
+	sat := 0.75 // high saturation — band 1 should be proportionally gated
 	opens, closes := 0, 0
 	for i := 0; i < 100; i++ {
-		c := w.ComputeLimit(ctx, sat, []int{0, 1})
+		c := w.ComputeLimit(ctx, sat, []int{0, 1, 2})
 		if c[1] == 1.0 {
 			opens++
 		} else {
@@ -93,10 +96,10 @@ func TestComputeLimit_ProportionalGating(t *testing.T) {
 		}
 	}
 	if opens == 0 {
-		t.Errorf("band 1 at sat=0.5 was never open over 100 calls")
+		t.Errorf("band 1 at sat=0.75 was never open over 100 calls")
 	}
 	if closes == 0 {
-		t.Errorf("band 1 at sat=0.5 was never closed over 100 calls")
+		t.Errorf("band 1 at sat=0.75 was never closed over 100 calls")
 	}
 }
 
