@@ -4,34 +4,45 @@ import (
 	"context"
 	"encoding/json"
 	"math"
+	"sync"
 	"sync/atomic"
 
 	"github.com/llm-d/llm-d-router/pkg/epp/framework/interface/plugin"
+	"github.com/llm-d/llm-d-router/pkg/epp/framework/plugins/flowcontrol/usagelimits"
 )
 
 const PolicyType = "soft-reflective-ceiling-policy"
 
-// policy holds per-band tick counters for proportional dispatch.
+// bandState holds per-band tick counter and the last-used period.
+// Resetting the counter on period change ensures the proportional gating
+// ratio is accurate immediately after a saturation transition.
+type bandState struct {
+	counter    atomic.Int64
+	lastPeriod atomic.Int64
+}
+
+// policy holds per-band state for proportional dispatch gating.
+// mu protects bands slice growth; individual atomic fields within
+// bandState are lock-free for the hot path.
 type policy struct {
-	counters []atomic.Int64
+	mu    sync.Mutex
+	bands []bandState
 }
 
 // Factory creates a soft-reflective ceiling policy plugin instance.
+// Uses the framework-provided NewPolicyFunc helper for consistent TypedName
+// behavior, matching the pattern used by the control plugin and upstream policies.
 func Factory(name string, _ *json.Decoder, _ plugin.Handle) (plugin.Plugin, error) {
 	p := &policy{}
-	return &wrappedPolicy{name: name, p: p}, nil
+	return usagelimits.NewPolicyFunc(name, p.computeLimit), nil
 }
 
-type wrappedPolicy struct {
-	name string
-	p    *policy
-}
-
-func (w *wrappedPolicy) TypedName() plugin.TypedName {
-	return plugin.TypedName{Type: PolicyType + "-type", Name: w.name}
-}
-
-func (w *wrappedPolicy) ComputeLimit(ctx context.Context, saturation float64, priorities []int) []float64 {
+// computeLimit implements the soft-reflective proportional gating algorithm.
+//
+// Ceiling formula: ceiling[i] = 1 - i*saturation/(N-1)
+// Band 0 (highest priority): ceiling = 1.0 always (never gated)
+// Band i (i>0): proportional dispatch when saturation >= ceiling[i]
+func (p *policy) computeLimit(_ context.Context, saturation float64, priorities []int) []float64 {
 	n := len(priorities)
 	ceilings := make([]float64, n)
 
@@ -42,9 +53,13 @@ func (w *wrappedPolicy) ComputeLimit(ctx context.Context, saturation float64, pr
 		return ceilings
 	}
 
-	// Grow counters if new bands appear
-	for len(w.p.counters) < n {
-		w.p.counters = append(w.p.counters, atomic.Int64{})
+	// Grow bands slice if new priority bands appear (protected by mutex).
+	if len(p.bands) < n {
+		p.mu.Lock()
+		for len(p.bands) < n {
+			p.bands = append(p.bands, bandState{})
+		}
+		p.mu.Unlock()
 	}
 
 	for i := range priorities {
@@ -65,7 +80,14 @@ func (w *wrappedPolicy) ComputeLimit(ctx context.Context, saturation float64, pr
 		} else {
 			// Proportional gating: dispatch every period-th tick
 			period := int64(math.Max(1, math.Round(saturation/(1.0-saturation+1e-9))))
-			tick := w.p.counters[i].Add(1)
+
+			// Reset counter when period changes to ensure immediate accuracy
+			// of the proportional ratio after saturation transitions.
+			if prev := p.bands[i].lastPeriod.Swap(period); prev != period {
+				p.bands[i].counter.Store(0)
+			}
+
+			tick := p.bands[i].counter.Add(1)
 			if tick%period == 0 {
 				ceilings[i] = 1.0 // open gate this tick
 			} else {
