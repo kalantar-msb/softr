@@ -17,23 +17,11 @@ scenario:
     #   labelKey: nvidia.com/gpu.product
     #   labelValue: NVIDIA-H100-80GB-HBM3  # lookup: HARDWARE_LABELS["H100_SXM_80GB"]
     acceleratorType:
-      labelKey: kubernetes.io/hostname
-      labelValue: ""
-      labelValues:
-        # proven - pokprod-b93r38s0
-        # broken - pokprod-b93r38s2
-        - pokprod-b93r38s3
-        - pokprod-b93r39s0
-        - pokprod-b93r39s1
-        # proven - pokprod-b93r39s2
-        - pokprod-b93r43s0
-        # proven - pokprod-b93r43s1
-        # proven - pokprod-b93r43s2
-        # broken - pokprod-b93r43s3
-        # - proven - pokprod-b93r44s0
-        - pokprod-b93r44s1
-        # proven - pokprod-b93r44s2
-        - pokprod-b93r44s3
+      labelKey: nvidia.com/gpu.product
+      labelValue: NVIDIA-H100-80GB-HBM3
+      # To pin specific nodes instead, override with:
+      #   labelKey: kubernetes.io/hostname
+      #   labelValues: [<node-1>, <node-2>, ...]
 
 
 
