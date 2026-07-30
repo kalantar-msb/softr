@@ -138,6 +138,22 @@ The ceiling policy is the only variable. See `config.md` for full YAML configs.
 
 Best on prefill-heavy workloads with meaningful sheddable fraction (≥50%). Minimal effect on decode-heavy workloads where KV saturation pins at ≥1.0 permanently.
 
+### Raw results: `results/`
+
+The `results/` directory contains the raw BLIS simulation outputs used to produce the table above.
+
+**File naming:** `{variant}_{workload}_{seed}.{ext}`
+
+| Segment | Values | Meaning |
+|---------|--------|---------|
+| `variant` | `baseline`, `treatment` | Policy under test: no ceiling (baseline) or soft-reflective proportional gating (treatment) |
+| `workload` | `interactive_chat`, `code_generation`, `reasoning` | Workload type (see `workloads/` for the YAML definitions) |
+| `seed` | `s42`, `s43`, `s44` | Three independent seeds per workload; delta figures in the table above are averaged across all three |
+| `ext` | `.json` | Per-request metrics array with aggregate statistics (`completed_requests`, `responses_per_sec`, `ttft_mean_ms`, `ttft_p90_ms`, `itl_mean_ms`, etc.) |
+| `ext` | `.txt` | Human-readable simulation log with BLIS startup warnings and the `=== Simulation Metrics ===` block |
+
+The `.json` `instance_id: "cluster"` aggregate carries the cluster-level statistics used to compute the table above (averaging the three seeds per workload). The `workloads/` directory contains the per-rate YAML inputs that produced these results. Per-instance breakdowns (`instance_id: "instance_0"`) appear in the `.txt` file.
+
 ## Code References
 
 Verified against llm-d-router v0.9.0 (submodule commit `5f4e762f`).
