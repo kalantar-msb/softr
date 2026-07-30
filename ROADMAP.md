@@ -1,7 +1,7 @@
 # Roadmap — sim2real Pipeline & softr Experiment Suite
 
 > **Filed by:** strategist agent (ACMM L5 — hold-gated mode)  
-> **Date:** 2026-07-29  
+> **Date:** 2026-07-30 (updated; original: 2026-07-29)  
 > **Status:** Draft — human review required before merge
 
 This document maps the current backlog to three planning horizons. It is
@@ -11,26 +11,38 @@ pipeline.
 
 ---
 
-## Current State (as of 2026-07-29)
+## Current State (as of 2026-07-30)
 
 | Signal | Value |
 |--------|-------|
 | Governor mode | SURGE |
-| Open issues (inference-sim/sim2real) | 34 |
-| Hold queue | 16 issues |
-| SLA violations | 18 |
+| Open issues (inference-sim/sim2real) | ~38 |
+| Hold queue | 16 issues (sim2real) + 4 (softr) |
+| Commit velocity | ~110 commits / 30 days |
 | Agent PR capacity | **Blocked** — GitHub App not installed on `inference-sim` org |
-| CI test coverage | 839 / 1,653 tests (50.8%) |
-| Pipeline stage | Step 5 (partial); step 6 not started |
+| CI test coverage | ~50% (pipeline tests partially covered) |
+| Pipeline stage | Step 5 complete on `main`; step 6 not started |
+| Corpus-mode trace | **Landed** — sim2real#605 merged; softr automation path unblocked |
 
 **Critical blockers before any roadmap horizon is achievable:**
 
 1. **Install `kubestellar-hive` App on `inference-sim` org** — without this,
    agent PRs cannot be delivered to sim2real. See softr#13 and sim2real#617.
 
-2. **Hold queue triage sprint** — 16 issues need to be classified as
-   `ready / needs-design / deferred` before agent capacity can be directed
-   usefully. See softr#11.
+2. **Hold queue triage sprint** — 16 sim2real issues + 4 softr issues need
+   `ready / needs-design / deferred` classification. See softr#11.
+
+3. **Close stale ROADMAP draft PR#10** — superseded by this PR#15. See softr#28.
+
+**Critical blockers before any roadmap horizon is achievable:**
+
+1. **Install `kubestellar-hive` App on `inference-sim` org** — without this,
+   agent PRs cannot be delivered to sim2real. See softr#13 and sim2real#617.
+
+2. **Hold queue triage sprint** — 16 sim2real issues + 4 softr issues need
+   `ready / needs-design / deferred` classification. See softr#11.
+
+3. **Close stale ROADMAP draft PR#10** — superseded by this PR#15. See softr#28.
 
 ---
 
@@ -42,7 +54,9 @@ pipeline.
 |------|-------|-------|
 | Install GitHub App on inference-sim org | sim2real#617, softr#13 | Human |
 | Hold queue triage sprint (classify 16 items) | softr#11 | Human |
-| Expand CI to full test suite (pytest pipeline/tests/) | quality bead 9416abfc | ci-maintainer |
+| Close stale ROADMAP PR#10 (superseded) | softr#28 | Human |
+| Create CONTRIBUTING.md for softr | softr#26 | guide/strategist |
+| Expand CI to full test suite (pytest pipeline/tests/) | ci-maintainer | ci-maintainer |
 | Fix `_names()` for path-string workloads (closes #572) | sim2real#572 | quality/scanner |
 | Close test issues #614/#615 (scanner test noise) | sim2real#614, #615 | scanner |
 
@@ -85,9 +99,11 @@ selection.
 |------|-------|
 | Remove `cluster.py provision` from README/CLAUDE.md | sim2real#613 |
 | Add Prerequisites section to README.md | sim2real#619 |
-| Create CONTRIBUTING.md | sim2real#620 |
+| Create CONTRIBUTING.md (sim2real) | sim2real#620 |
+| Create CONTRIBUTING.md (softr) | softr#26 |
 | Fix llm-d-rbac fragment documentation gap | sim2real#550 |
 | Fix `generate_from_config.py` vLLM pods alias miss | sim2real#549 |
+| Add CHANGELOG.md + version release tag | softr#29 |
 
 ---
 
@@ -110,8 +126,14 @@ numbers, not just raw measurements.
 | Item | Issue |
 |------|-------|
 | Epic: step-6 — Validate/execute + auto-fix | sim2real#534 |
+| **File step-6 sub-issues from step-5 deferred items** | softr#20 |
 | sim2real-check skill review pass | sim2real#487 |
 | Round-trip test: translation → sim2real → validate | sim2real#592 |
+
+**Gap (softr#20):** sim2real#534 has no sub-issues. The step-5 design doc has at
+least 4 deferred items (cross-replica analyze aggregation, per-replica aggregate
+verdict, `--replicas` shorthand on `deploy.py run`, shrink semantics) that need
+to be filed before step-6 work can begin.
 
 **Milestone exit criterion:** A single `sim2real validate` command can
 reproduce a softr-style experiment end-to-end and flag regressions.
@@ -135,9 +157,28 @@ agent. These are instant merges once GitHub App install is complete.
 
 *Reduce barriers for external operators to adopt sim2real.*
 
-- **softr experiment automation**: wire `kalantar-msb/softr` experiment bundle
-  through `sim2real-bootstrap` → `sim2real` → `sim2real-check` end-to-end
-  (currently softr has no `transfer.yaml` — pipeline handoff is incomplete)
+### softr End-to-End Automation *(promoted from H3 — corpus-mode landed)*
+
+> **Update 2026-07-30:** The corpus-mode trace-input pipeline (`sim2real#605`)
+> landed on `main`. The softr automation path is now unblocked — see softr#23.
+
+| Item | Issue |
+|------|-------|
+| Create `transfer.yaml` for softr bundle | softr#23 |
+| Run `sim2real-bootstrap --byo` with softr config | softr#23 |
+| Use softr as step-6 demo run (double-duty integration test) | softr#20, softr#23 |
+| End-to-end: sim2real-check validates softr TTFT claims | softr#23 |
+
+### Versioning and Release Cadence
+
+| Item | Issue |
+|------|-------|
+| Add CHANGELOG.md + first version tag | softr#29 |
+| Add BREAKING CHANGE annotation policy to CONTRIBUTING.md | softr#29, sim2real#620 |
+| Publish GitHub Release at v0.9.0 anchor | softr#6 |
+
+### Other Adoption Items
+
 - **Multi-cluster support**: sim2real across heterogeneous GPU clusters
 - **Data PVC path isolation** (sim2real#553): scope `/data/` by scenario to
   prevent cross-experiment collisions
