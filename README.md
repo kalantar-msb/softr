@@ -11,14 +11,14 @@ soft-reflective/
 ├── algorithms/
 │   ├── soft_reflective_ceiling.go      # Treatment plugin
 │   └── constant_ceiling_control.go     # Control plugin (ceiling=1.0)
-├── scripts/
-│   ├── run.sh                          # BLIS simulation (baseline + treatment × 3 seeds)
-│   ├── compare.sh                      # Results comparison table
-│   └── treatment.patch                 # BLIS patch for simulation
+├── baselines/
+│   ├── baseline.yaml                   # Scenario config (model, cluster, vLLM flags)
+│   └── defaults/                       # Framework workaround overlays
+├── results/                            # BLIS simulation outputs (JSON + TXT per seed)
 └── workloads/
-    ├── interactive_chat.yaml           # 150 QPS, 30/70, short tokens
-    ├── code_generation.yaml            # 18 QPS, 30/70, large input
-    └── reasoning.yaml                  # 1 QPS, 50/50, huge output
+    ├── interactive_chat_{20,40,60,80}.yaml   # Variable QPS, 80/20 crit/shed
+    ├── code_generation_{4,10,16,24}.yaml     # Variable QPS, 30/70 crit/shed
+    └── reasoning_{0_2,0_4,0_7,1_2}.yaml      # Variable QPS, 50/50 crit/shed
 ```
 
 ## Algorithm
