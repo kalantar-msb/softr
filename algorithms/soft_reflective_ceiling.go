@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"math"
+	"sync"
 	"sync/atomic"
 
 	"github.com/llm-d/llm-d-router/pkg/epp/framework/interface/plugin"
@@ -12,7 +13,10 @@ import (
 const PolicyType = "soft-reflective-ceiling-policy"
 
 // policy holds per-band tick counters for proportional dispatch.
+// mu protects counters slice growth; individual atomic.Int64 elements
+// are safe for concurrent Add after the slice is sized correctly.
 type policy struct {
+	mu       sync.Mutex
 	counters []atomic.Int64
 }
 
@@ -42,10 +46,16 @@ func (w *wrappedPolicy) ComputeLimit(ctx context.Context, saturation float64, pr
 		return ceilings
 	}
 
-	// Grow counters if new bands appear
+	// Grow counters slice if new bands appear. Protected by a mutex to prevent
+	// data races when ComputeLimit is called concurrently: without a lock, two
+	// goroutines can both observe len(counters) < n and race on append, corrupting
+	// the slice header. Individual atomic.Int64 elements are safe once the slice
+	// is correctly sized.
+	w.p.mu.Lock()
 	for len(w.p.counters) < n {
 		w.p.counters = append(w.p.counters, atomic.Int64{})
 	}
+	w.p.mu.Unlock()
 
 	for i := range priorities {
 		if i == 0 {
