@@ -32,14 +32,16 @@ llm-d-router/  # llm-d-router submodule (pinned to v0.9.0)
 
 1. Edit or add files under `algorithms/`
 2. Verify the plugin compiles: `go build ./algorithms/...` (requires `llm-d-router` submodule initialized)
-3. Run the BLIS simulation to validate behavior:
+3. Run the BLIS simulation to validate behavior (requires BLIS in `$PATH`):
 
    ```bash
-   bash scripts/run.sh        # baseline + treatment × 3 seeds
-   bash scripts/compare.sh    # print comparison table
+   blis run --workload workloads/<workload>.yaml --baseline baselines/baseline.yaml
    ```
 
-4. Update the Simulation Results table in `README.md` if results change
+   The simulation outputs land in `results/`. Compare results across runs to validate
+   that your change improves or at least doesn't regress the key metrics.
+
+4. Update the Simulation Results table in `README.md` if results change significantly
 5. Open a pull request with your changes
 
 ### Updating the llm-d-router submodule
@@ -54,7 +56,7 @@ git add llm-d-router
 git commit -m "chore: bump llm-d-router to <version>"
 ```
 
-After bumping, re-run `scripts/run.sh` to regenerate results.
+After bumping, re-run the BLIS simulation to regenerate results.
 
 ## Transferring an improved algorithm to production
 
