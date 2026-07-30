@@ -4,9 +4,13 @@
 # into llm-d-router (a separate repo, tracked as a submodule). There is
 # intentionally no top-level go.mod for the plugin itself.
 #
+# Each .go file in algorithms/ belongs to its own package (different package
+# declarations), so they must live in separate subdirectories for `go build`.
+#
 # This workflow bootstraps a minimal Go module workspace and stubs out the
-# llm-d-router dependency so the plugin can be compiled and vet-checked in
-# isolation, catching build regressions before they reach the integration step.
+# llm-d-router dependency so each plugin package can be compiled and
+# vet-checked in isolation, catching build regressions before they reach
+# the integration step.
 #
 # Key design: build/vet steps FAIL the job on errors (no || echo suppression).
 # Stubs for llm-d-router interfaces allow `go build ./...` to succeed cleanly.
@@ -26,12 +30,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@0a12ed9d6a96ab950c8f026ed9f722fe0da7ef32  # v5.0.2
         with:
           go-version: "1.23"
           cache: false
@@ -45,90 +47,76 @@ jobs:
           echo "Plugin files present: OK"
 
       - name: Bootstrap module with interface stubs
-        # Create a stub module for llm-d-router interfaces so `go build ./...`
-        # compiles cleanly without the full upstream module.
-        # Using stubs (not || echo) means build failures are REAL failures.
+        # Each algorithms/*.go file is a separate Go package (different package
+        # declarations), so each goes into its own subdirectory.
+        # We stub out the llm-d-router dependency so go build succeeds without
+        # the full upstream module.  No || echo suppression: real failures fail.
         run: |
+          set -euo pipefail
+
           STUB_ROOT=/tmp/llm-d-stub
-          PLUGIN_DIR=/tmp/plugin-main
+          PLUGIN_ROOT=/tmp/plugin-check
+          PLUGIN_PKG=github.com/llm-d/llm-d-router
+          PLUGIN_DIR="${STUB_ROOT}/pkg/epp/framework/interface/plugin"
+          USAGE_DIR="${STUB_ROOT}/pkg/epp/framework/plugins/flowcontrol/usagelimits"
+          mkdir -p "${PLUGIN_DIR}" "${USAGE_DIR}"
 
-          mkdir -p "$STUB_ROOT/pkg/epp/framework/interface/plugin"
-          mkdir -p "$STUB_ROOT/pkg/epp/framework/plugins/flowcontrol/usagelimits"
+          # ── stub: plugin.go ──────────────────────────────────────────────────
+          printf '%s\n' \
+            'package plugin' \
+            'import "context"' \
+            'type TypedName struct { Type string; Name string }' \
+            'type Handle interface{}' \
+            'type Plugin interface {' \
+            '    TypedName() TypedName' \
+            '    ComputeLimit(ctx context.Context, saturation float64, priorities []int) []float64' \
+            '}' \
+            > "${PLUGIN_DIR}/plugin.go"
 
-          cat > "$STUB_ROOT/pkg/epp/framework/interface/plugin/plugin.go" <<'GOEOF'
-          package plugin
+          # ── stub: usagelimits.go ─────────────────────────────────────────────
+          printf '%s\n' \
+            'package usagelimits' \
+            'import (' \
+            '    "context"' \
+            '    p "'"${PLUGIN_PKG}"'/pkg/epp/framework/interface/plugin"' \
+            ')' \
+            'type pf struct { name string; fn func(context.Context, float64, []int) []float64 }' \
+            'func (x *pf) TypedName() p.TypedName { return p.TypedName{Type: "policy-func", Name: x.name} }' \
+            'func (x *pf) ComputeLimit(ctx context.Context, sat float64, pr []int) []float64 { return x.fn(ctx, sat, pr) }' \
+            'func NewPolicyFunc(name string, fn func(context.Context, float64, []int) []float64) p.Plugin { return &pf{name: name, fn: fn} }' \
+            > "${USAGE_DIR}/usagelimits.go"
 
-          import "context"
+          printf 'module %s\n\ngo 1.23\n' "${PLUGIN_PKG}" > "${STUB_ROOT}/go.mod"
 
-          type TypedName struct {
-            Type string
-            Name string
-          }
-
-          type Handle interface{}
-
-          type Plugin interface {
-            TypedName() TypedName
-            ComputeLimit(ctx context.Context, saturation float64, priorities []int) []float64
-          }
-          GOEOF
-
-          cat > "$STUB_ROOT/pkg/epp/framework/plugins/flowcontrol/usagelimits/usagelimits.go" <<'GOEOF'
-          package usagelimits
-
-          import (
-            "context"
-            "github.com/llm-d/llm-d-router/pkg/epp/framework/interface/plugin"
-          )
-
-          type policyFunc struct {
-            name string
-            fn   func(context.Context, float64, []int) []float64
-          }
-
-          func (p *policyFunc) TypedName() plugin.TypedName {
-            return plugin.TypedName{Type: "policy-func", Name: p.name}
-          }
-
-          func (p *policyFunc) ComputeLimit(ctx context.Context, sat float64, prios []int) []float64 {
-            return p.fn(ctx, sat, prios)
-          }
-
-          func NewPolicyFunc(name string, fn func(context.Context, float64, []int) []float64) plugin.Plugin {
-            return &policyFunc{name: name, fn: fn}
-          }
-          GOEOF
-
-          printf 'module github.com/llm-d/llm-d-router\n\ngo 1.23\n' > "$STUB_ROOT/go.mod"
-
-          mkdir -p "$PLUGIN_DIR"
-          cp algorithms/*.go "$PLUGIN_DIR/"
-          printf 'module soft_reflective_ceiling_check\n\ngo 1.23\n\nrequire github.com/llm-d/llm-d-router v0.0.0\n\nreplace github.com/llm-d/llm-d-router => /tmp/llm-d-stub\n' > "$PLUGIN_DIR/go.mod"
-
-          cd "$PLUGIN_DIR" && go mod tidy
+          # ── stage each plugin file in its own subdirectory ───────────────────
+          # Each file declares a distinct Go package, so they must be in separate dirs.
+          for src in algorithms/*.go; do
+            name=$(basename "${src}" .go)
+            pkg_dir="${PLUGIN_ROOT}/${name}"
+            mkdir -p "${pkg_dir}"
+            cp "${src}" "${pkg_dir}/"
+            printf 'module soft_reflective_ceiling_check/%s\n\ngo 1.23\n\nrequire %s v0.0.0\n\nreplace %s => %s\n' \
+              "${name}" "${PLUGIN_PKG}" "${PLUGIN_PKG}" "${STUB_ROOT}" \
+              > "${pkg_dir}/go.mod"
+            echo "Staged: ${src} -> ${pkg_dir}/"
+          done
 
       - name: Build
         # Fails the job on compilation errors — no || echo suppression.
         run: |
-          cd /tmp/plugin-main
-          go build ./...
+          set -euo pipefail
+          for pkg_dir in /tmp/plugin-check/*/; do
+            echo "→ build ${pkg_dir}"
+            (cd "${pkg_dir}" && go build ./...)
+          done
           echo "Build: OK"
 
       - name: Vet
         # Fails the job on vet violations — no || echo suppression.
         run: |
-          cd /tmp/plugin-main
-          go vet ./...
+          set -euo pipefail
+          for pkg_dir in /tmp/plugin-check/*/; do
+            echo "→ vet ${pkg_dir}"
+            (cd "${pkg_dir}" && go vet ./...)
+          done
           echo "Vet: OK"
-
-      - name: Test (if test files exist)
-        # Run tests when present; skip with informational message when absent.
-        # See issues #24 and #51 for adding unit tests and a coverage gate.
-        run: |
-          cd /tmp/plugin-main
-          TEST_FILES=$(ls *_test.go 2>/dev/null || true)
-          if [ -n "$TEST_FILES" ]; then
-            go test -v -count=1 ./...
-          else
-            echo "No test files found — skipping (tracked in #24 and #51)"
-          fi
