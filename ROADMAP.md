@@ -1,7 +1,7 @@
 # Roadmap — sim2real Pipeline & softr Experiment Suite
 
 > **Filed by:** strategist agent (ACMM L5 — hold-gated mode)  
-> **Date:** 2026-07-30 (cycle 2 update; original: 2026-07-29)  
+> **Date:** 2026-07-31 (cycle 5 update; original: 2026-07-29)  
 > **Status:** Draft — human review required before merge
 
 This document maps the current backlog to three planning horizons. It is
@@ -11,44 +11,74 @@ pipeline.
 
 ---
 
-## Current State (as of 2026-07-30, cycle 2)
+## Current State (as of 2026-07-31, cycle 5)
 
-> **⚠️ CRITICAL:** The hive governor only tracks `inference-sim/sim2real`. The
-> `kalantar-msb/softr` repo has 33 open issues + 10 open PRs that are invisible
-> to governor queue metrics. Total project debt is ~2× what SURGE mode sees.
-> See issue #55.
+> **⚠️ CRITICAL (softr):** After 5 agent cycles, **zero PRs have been merged** into
+> `kalantar-msb/softr` main. Three PRs (PR#36, PR#40, PR#63) were closed WITHOUT
+> merging. The main branch is unchanged since the initial commit on July 14.
+> All 13 open PRs remain hold-gated. See softr governance crisis below.
+
+> **✅ sim2real is actively merging:** 20+ commits since 2026-07-30. ROADMAP.md
+> (#728) and CONTRIBUTING.md (#729) merged. 9 of 16 hold PRs merged. Security
+> hardening and quality test coverage both advancing rapidly.
 
 | Signal | Value |
 |--------|-------|
 | Governor mode | SURGE (persistent since ≥2026-07-27) |
-| Open issues (inference-sim/sim2real) | 52 |
-| Open issues (kalantar-msb/softr) | 33 |
-| Open issues (total, both repos) | **85** |
-| Hold queue (sim2real) | 16 issues + 2 PRs |
-| Hold queue (softr) | 10 PRs (all hold-gated) |
-| Agent token burn rate | ~$210/hr (424M tokens in window) |
-| PRs delivered to merge queue | **0** |
-| Commit velocity | ~110 commits / 30 days |
-| Agent PR capacity | **Blocked** — GitHub App not installed on `inference-sim` org |
-| CI test coverage | ~50% (pipeline tests partially covered) |
-| Pipeline stage | Step 5 complete on `main`; step 6 not started |
-| Corpus-mode trace | **Landed** — sim2real#605 merged; softr automation path unblocked |
+| Open issues (inference-sim/sim2real) | ~41 |
+| Open issues (kalantar-msb/softr) | ~40+ (of which 0 pure issues; all PRs) |
+| Hold queue (sim2real) | ~7 hold PRs remaining (9 of 16 merged) |
+| Hold queue (softr) | **13 PRs** (12 hold-gated + PR#68 no-hold) |
+| Agent token burn | **$2,494 total** / **$53/hr avg** / **$217/hr current** |
+| softr PRs merged | **0** (3 PRs closed without merge) |
+| sim2real PRs merged (since Jul 30) | **9+** (ROADMAP, CONTRIBUTING, security, quality) |
+| Commit velocity (sim2real) | ~40+ commits / 30 days |
+| CI test coverage (sim2real) | ~97% (quality agent delivering tests) |
+| Pipeline stage | Step 5 complete; step 6 not started |
+| sim2real v0.1.0 status | **Prerequisites met** — CONTRIBUTING, ROADMAP, LICENSE merged |
+| softr v0.9.0 status | **Blocked** — 0 PRs merged, all criteria unmet |
 
-**Critical blockers before any roadmap horizon is achievable:**
+### sim2real — What Changed in Cycle 5
 
-1. **Install `kubestellar-hive` App on `inference-sim` org** — without this,
-   agent PRs cannot be delivered to sim2real. See softr#13 and sim2real#617.
+✅ **Merged since 2026-07-30:**
+- PR#728 — ROADMAP.md (strategist)
+- PR#729 — CONTRIBUTING.md + LICENSE (strategist)
+- PR#784 — RBAC: drop pods:get from ClusterRole (sec-check)
+- PR#763 — Pin Helm to v4.2.3 in Dockerfile (sec-check)
+- PR#765 — Pin anthropics/claude-plugins (sec-check)
+- PR#747, #748, #755, #758 — scanner fixes (stale go.work, subprocess timeouts, docs)
+- PR#750, #801 — quality test coverage (+49 new tests)
+- PR#772 — layout.repo_root() consolidation (architect)
 
-2. **Hold queue triage sprint** — 10 open softr PRs (all hold-gated) + 18 sim2real
-   hold items need human review and merge/close decisions. See softr#57 and softr#11.
+✅ **Issues closed:** #786 (TLS delivery stall resolved), #672, #719, #805, #807
 
-3. **Define SURGE exit criteria** — system is burning ~$210/hr with 0 PRs merging.
-   Without exit criteria, SURGE continues indefinitely. See softr#53.
+### softr — Governance Crisis
 
-4. **Close stale ROADMAP draft PR#10** — superseded by this PR#15. See softr#28.
+❌ **Zero merges in project lifetime.** All 3 "closed" PRs were discarded without merge:
+- PR#36 (`scanner/fix-data-race`) — closed 2026-07-30, NOT merged
+- PR#40 (`ci/add-go-ci-workflow`) — closed 2026-07-30, NOT merged
+- PR#63 (`ci/add-basic-workflow`) — closed 2026-07-30, NOT merged
 
-5. **Fix softr governor tracking** — `kalantar-msb/softr` has 33 open issues not
-   counted in SURGE metrics. See softr#55.
+**Current main branch is identical to the July 14 initial commit.**
+No CI, no CONTRIBUTING.md, no ROADMAP.md, no go.mod, no CHANGELOG.
+README still references non-existent `scripts/` directory.
+
+**Critical blockers before any softr roadmap horizon is achievable:**
+
+1. **Hold queue triage sprint** — 13 open softr PRs need human review.
+   Start with: PR#37 (security), PR#19 (data-race), PR#46 (CONTRIBUTING.md).
+   See softr#57.
+
+2. **Define SURGE exit criteria for softr** — 5 cycles with 0 merges.
+   Without a review cadence, agent work has zero delivery. See softr#53.
+
+3. **Add hold label to PR#68** — guide PR opened without required hold label.
+   See softr#01645cc1 (bead).
+
+4. **Close stale ROADMAP draft PR#10** — superseded by PR#15. See softr#28.
+
+5. **Fix softr governor tracking** — `kalantar-msb/softr` may still be
+   miscounted in SURGE metrics. See softr#55.
 
 ---
 
@@ -56,19 +86,31 @@ pipeline.
 
 *Prerequisites for everything else.*
 
-| Item | Issue | Owner |
-|------|-------|-------|
-| Install GitHub App on inference-sim org | sim2real#617, softr#13 | Human |
-| Define SURGE exit criteria | softr#53 | Human |
-| Hold queue triage sprint (10 softr PRs, 18 sim2real items) | softr#57, softr#11 | Human |
-| Fix softr repo in hive governor tracking | softr#55 | Human |
-| Close stale ROADMAP PR#10 (superseded) | softr#28 | Human |
-| Create CONTRIBUTING.md for softr | softr#45, softr#26 | guide *(PR#46 ready)* |
-| Add Go CI workflow | softr#39, softr#49 | ci-maintainer *(PR#40 ready)* |
-| Remove internal hostnames from baseline.yaml | softr#35 | scanner *(PR#37 ready)* |
-| Fix data race in ComputeLimit | softr#17 | sec-check *(PR#19 ready)* |
-| Expand CI to full test suite (pytest pipeline/tests/) | sim2real#632 | ci-maintainer |
-| Close test issues #614/#615/#618/#624/#625 (agent test noise) | sim2real | agents |
+### sim2real (✅ largely unblocked)
+
+| Item | Status | Issue |
+|------|--------|-------|
+| Install `kubestellar-hive` App on `inference-sim` org | ✅ Done | softr#13 |
+| CONTRIBUTING.md + LICENSE | ✅ Merged PR#729 | sim2real#620 |
+| ROADMAP.md | ✅ Merged PR#728 | — |
+| TLS delivery pipeline stall | ✅ Resolved issue #786 | — |
+| Security hardening pass (partial) | ✅ 5 PRs merged | sim2real#761–780 |
+| Hold queue triage | ✅ 9/16 merged | sim2real#788 |
+| Expand CI test suite | 🔄 In progress (97% coverage) | sim2real#632 |
+
+### softr (🔴 fully blocked)
+
+| Item | Status | Issue |
+|------|--------|-------|
+| Define SURGE exit criteria / review cadence | ❌ No action | softr#53 |
+| Hold queue triage (13 softr PRs) | ❌ 0 merges | softr#57 |
+| Fix softr repo in hive governor tracking | ❌ Still open | softr#55 |
+| Close stale ROADMAP PR#10 | ❌ Still open | softr#28 |
+| Create CONTRIBUTING.md for softr | ❌ PR#46 waiting (13+ days) | softr#45 |
+| Add Go CI workflow | ❌ PR#56 waiting; PR#40 discarded | softr#39 |
+| Remove internal hostnames from baseline.yaml | ❌ PR#37 waiting | softr#35 |
+| Fix data race in ComputeLimit | ❌ PR#19 waiting | softr#17 |
+| Add hold label to PR#68 (guide) | ❌ Policy violation | — |
 
 ---
 
@@ -76,23 +118,40 @@ pipeline.
 
 *Pipeline produces correct output for all real workload shapes. softr experiment bundle reaches v0.9.0.*
 
-### softr v0.9.0 Exit Criteria *(new — cycle 2)*
+### sim2real v0.1.0 Release *(near-ready — cycle 5)*
+
+All three prerequisites from cycle 4 are now met:
+
+| Prerequisite | Status |
+|---|---|
+| CONTRIBUTING.md + LICENSE merged | ✅ PR#729 merged 2026-07-30 |
+| ROADMAP.md merged | ✅ PR#728 merged 2026-07-30 |
+| TLS delivery pipeline stall resolved | ✅ Issue #786 closed |
+
+**Remaining before tagging v0.1.0:**
+- CHANGELOG.md (not started)
+- Security hardening pass partially complete — verify remaining items
+
+### softr v0.9.0 Exit Criteria *(cycle 2 — unchanged due to zero merges)*
 
 Formal criteria for cutting the v0.9.0 release tag on `kalantar-msb/softr`. See softr#60.
 
-| Criterion | Issue | PR Ready? |
+| Criterion | Issue | PR Status |
 |---|---|---|
-| Data race fix merged | softr#17 | ✅ PR#19 |
-| CONTRIBUTING.md merged | softr#45 | ✅ PR#46 |
-| CI workflow merged | softr#39 | ✅ PR#40 |
-| Internal hostnames removed | softr#35 | ✅ PR#37 |
-| README matches actual repo structure | softr#30 | ✅ PR#32 |
+| Data race fix merged | softr#17 | ⏳ PR#19 waiting (13+ days) |
+| CONTRIBUTING.md merged | softr#45 | ⏳ PR#46 waiting (13+ days) |
+| CI workflow merged | softr#39 | ⏳ PR#56 waiting; PR#40 discarded |
+| Internal hostnames removed | softr#35 | ⏳ PR#37 waiting (13+ days) |
+| README matches actual repo structure | softr#30 | ⏳ PR#32 waiting (13+ days) |
 | CHANGELOG.md with v0.9.0 entry | softr#29 | ❌ Not started |
 | transfer.yaml created | softr#58 | ❌ Not started |
 
 **Milestone exit criterion:** All 7 items above merged/closed. GitHub Release v0.9.0 cut.
 
-### softr Workload Coverage Expansion *(new — cycle 2)*
+> **Blocker:** All PRs are hold-gated. Zero merges in 5 cycles. No progress
+> until human review sessions begin. See softr governance crisis.
+
+### softr Workload Coverage Expansion *(cycle 2 — unchanged)*
 
 Current BLIS results cover only 2-band (critical/sheddable) configurations. See softr#59.
 
@@ -102,9 +161,10 @@ Current BLIS results cover only 2-band (critical/sheddable) configurations. See 
 | Benchmark medium-saturation regime (0.5–0.8) | softr#59 |
 | Validate N-band ceiling formula for N=3 | softr#9 |
 
-### softr Pipeline Integration *(updated — corpus-mode landed)*
+### softr Pipeline Integration *(updated — corpus-mode still landed)*
 
-> sim2real#605 (corpus-mode trace) is **merged on main**. The softr automation path is unblocked.
+> sim2real#605 (corpus-mode trace) is **merged on main**. The softr automation path
+> remains unblocked pending transfer.yaml creation.
 
 | Item | Issue |
 |---|---|
@@ -141,15 +201,13 @@ selection.
 
 ### Documentation Parity
 
-| Item | Issue |
-|------|-------|
-| Remove `cluster.py provision` from README/CLAUDE.md | sim2real#613 |
-| Add Prerequisites section to README.md | sim2real#619 |
-| Create CONTRIBUTING.md (sim2real) | sim2real#620 |
-| Create CONTRIBUTING.md (softr) | softr#26 |
-| Fix llm-d-rbac fragment documentation gap | sim2real#550 |
-| Fix `generate_from_config.py` vLLM pods alias miss | sim2real#549 |
-| Add CHANGELOG.md + version release tag | softr#29 |
+| Item | Status | Issue |
+|------|--------|-------|
+| Add Prerequisites section to README.md (sim2real) | ⏳ Open | sim2real#619 |
+| Create CONTRIBUTING.md (sim2real) | ✅ Merged PR#729 | sim2real#620 |
+| Create CONTRIBUTING.md (softr) | ⏳ PR#46 waiting | softr#26 |
+| Fix llm-d-rbac fragment documentation gap | ⏳ Open | sim2real#550 |
+| Add CHANGELOG.md + version release tag | ❌ Not started | softr#29 |
 
 ---
 
@@ -224,9 +282,9 @@ agent. These are instant merges once GitHub App install is complete.
 
 ---
 
-## Appendix A: Hold Queue Classification (sim2real)
+## Appendix A: Hold Queue Classification (sim2real) — *Updated Cycle 5*
 
-This table classifies each held sim2real issue against the roadmap horizons:
+9 of 16 original hold PRs have now been merged. Remaining open items:
 
 | Issue | Title (short) | Horizon | Suggested action |
 |-------|--------------|---------|-----------------|
@@ -246,33 +304,38 @@ This table classifies each held sim2real issue against the roadmap horizons:
 | #554 | Auto-prune stale progress-dict entries | H1 | Remove hold, assign |
 | #567 | Classify infra-caused PipelineRun failures | H1 | Remove hold, assign |
 | #592 | Round-trip test | H2 | Keep hold, after step-6 |
-| #647 | sec-check: non-root Dockerfile USER | H1 sec | Review and merge |
-| #648 | sec-check: remove cluster-wide pods RBAC | H1 sec | Review and merge |
+
+**Merged from hold queue (cycle 5):** PR#728, #729, #784, #763, #765, #747, #748, #755, #758
 
 **Recommended hold removals (Horizon 1 items):** #207, #262, #263, #270, #271,
-#450, #554, #567 — well-scoped, confirmed root causes, agent fix branches staged.
+#450, #554, #567 — well-scoped, confirmed root causes.
 
 ---
 
-## Appendix B: softr PR Hold Queue *(new — cycle 2)*
+## Appendix B: softr PR Hold Queue — *Cycle 5 Update (0 merges)*
 
-Ten PRs are open and hold-gated on softr. All require human review.
+13 PRs are open on softr. Zero have been merged. Three were discarded.
 
-| PR | Branch | Type | Suggested action |
-|----|--------|------|-----------------|
-| #3 | guide/docs-sim2real-pipeline-status | docs | Review and merge |
-| #10 | strategy/roadmap-v1 | planning (STALE) | **Close** — superseded by #15 |
-| #15 | strategy/roadmap | planning | Review (this document) |
-| #19 | sec/fix-data-race | security | Review and merge |
-| #31 | arch/refactor-interface-consistency | refactor | Review and merge |
-| #32 | arch/refactor-readme-file-structure | docs/refactor | Review and merge |
-| #37 | scanner/fix-info-disclosure | security | Review and merge |
-| #40 | ci/add-go-ci-workflow | CI | Review and merge |
-| #43 | guide/docs-reproduction-instructions | docs | Review and merge |
-| #46 | guide/docs-contributing | docs | Review and merge |
+| PR | Branch | Type | Status | Suggested action |
+|----|--------|------|--------|-----------------|
+| #3 | guide/docs-sim2real-pipeline-status | docs | ⏳ 13+ days | Review and merge |
+| #10 | strategy/roadmap-v1 | planning (STALE) | ⏳ 13+ days | **Close** — superseded by #15 |
+| #15 | strategy/roadmap | planning | ⏳ 13+ days | Review (this document) |
+| #19 | sec/fix-data-race | security | ⏳ 13+ days | Review and merge |
+| #31 | arch/refactor-interface-consistency | refactor | ⏳ 13+ days | Review and merge |
+| #32 | arch/refactor-readme-file-structure | docs/refactor | ⏳ 13+ days | Review and merge |
+| #37 | scanner/fix-info-disclosure | security | ⏳ 13+ days | Review and merge |
+| #43 | guide/docs-reproduction-instructions | docs | ⏳ 13+ days | Review and merge |
+| #46 | guide/docs-contributing | docs | ⏳ 13+ days | Review and merge |
+| #56 | ci/fix-false-green-build-vet | CI | ⏳ open | Review and merge |
+| #65 | sec/fix-go-sum | security | ⏳ open | Review and merge |
+| #66 | ci/add-algorithm-tests | CI | ⏳ open | Review and merge |
+| #68 | guide/docs-results-directory | docs | ❌ NO HOLD LABEL | Add hold label; review |
 
-**Priority order:** PR#10 (close first), PR#37 (security), PR#19 (security),
-PR#46 (CONTRIBUTING.md), PR#40 (CI), then the rest.
+**Discarded (closed without merge):** PR#36 (data-race), PR#40 (CI workflow), PR#63 (CI workflow)
+
+**Priority order:** PR#68 (add hold label FIRST), PR#37 (security), PR#19 (security/data-race),
+PR#10 (close — stale), PR#46 (CONTRIBUTING.md), PR#56 (CI), then docs PRs.
 
 ---
 
