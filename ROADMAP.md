@@ -1,7 +1,7 @@
 # Roadmap — sim2real Pipeline & softr Experiment Suite
 
 > **Filed by:** strategist agent (ACMM L5 — hold-gated mode)  
-> **Date:** 2026-08-01 (cycle 6 update; original: 2026-07-29)  
+> **Date:** 2026-08-01 (cycle 7 update; original: 2026-07-29)  
 > **Status:** Draft — human review required before merge
 
 This document maps the current backlog to three planning horizons. It is
@@ -11,47 +11,53 @@ pipeline.
 
 ---
 
-## Current State (as of 2026-08-01, cycle 6)
+## Current State (as of 2026-08-01, cycle 7)
 
-> **🚨 CRITICAL (sim2real):** The PR pipeline is in a **day-2 outage**.
+> **🚨 CRITICAL GOVERNANCE FAILURE:** The hive is at **ACMM L1 (ADVISORY)**. All agent write
+> operations are blocked system-wide. No issues, no PRs, no git pushes. This is the root
+> cause of ALL throughput failures below.
+
+> **🚨 CRITICAL (sim2real):** The PR pipeline is in a **day-3 outage**.
 > The hive PR-request watcher TLS cert issue (issue #782) remains unresolved.
-> **0 PRs are open** despite 100 branches with agent work. 48+ hours with no PR
-> creation. 75+ worktree-issue-* branches are orphaned.
+> **0 open PRs** despite 155 branches with agent work. 72+ hours with no PR creation.
 
-> **🚨 CRITICAL (sim2real):** **v0.1.0 is overdue.** All prerequisites landed
-> on main 2 days ago (Jul 30: ROADMAP.md, CONTRIBUTING.md, security hardening,
-> CI coverage ≥97%). The only remaining step is a human cutting the release tag.
+> **🚨 CRITICAL (sim2real):** **v0.1.0 is 3 days overdue.** All prerequisites landed
+> on main Jul 30 (ROADMAP.md, CONTRIBUTING.md, security hardening, CI coverage ≥97%).
+> The only remaining step is a human cutting the release tag.
 
-> **⚠️ CRITICAL (softr):** After 6 agent cycles, **zero PRs have been merged** into
+> **🚨 CRITICAL (softr):** After 7 agent cycles, **zero PRs have been merged** into
 > `kalantar-msb/softr` main. The repo has had **zero substantive code changes since
-> initial commit on July 14 (18 days)**. All 13 open PRs remain hold-gated.
+> initial commit on July 14 (21 days)**. 16 branches pushed, 0 merged.
 
-> **⚠️ ADVISORY MODE:** Strategist is operating at ACMM L1 (ADVISORY) — cannot
-> create GitHub issues or PRs directly. All findings documented as beads only.
+> **🚨 CRITICAL (system):** **100% SLA violation rate.** All 30 open issues are overdue.
+> The entire actionable queue is in SLA breach. SURGE mode has been persistent since Jul 27.
+
+> **⚠️ ADVISORY MODE:** Strategist is at ACMM L1 — cannot create GitHub issues or PRs.
+> All findings documented as beads only. **Human must elevate ACMM level to unblock.**
 
 | Signal | Value |
 |--------|-------|
-| Governor mode | SURGE (persistent since ≥2026-07-27) |
-| Open issues (inference-sim/sim2real) | ~46 |
-| Open issues (kalantar-msb/softr) | ~34 issues + 13 PRs |
-| Hold queue (sim2real) | **0 PRs** (all closed/merged — pipeline stalled) |
-| Hold queue (softr) | **13 PRs** (12 hold-gated + PR#68 no-hold) |
-| softr PRs merged | **0** (3 PRs closed without merge) |
-| sim2real PRs merged (since Jul 30) | **20+** (ROADMAP, CONTRIBUTING, security, quality) |
-| sim2real last merge | Jul 31 (PR#809) |
-| Commit velocity (sim2real) | 800+ total commits, pipeline functional |
-| CI test coverage (sim2real) | ~97% (quality agent delivered) |
+| Governor mode | **SURGE** (persistent since ≥2026-07-27) |
+| ACMM level | **L1 (ADVISORY)** — all writes blocked |
+| SLA violations | **30/30 (100%)** — entire queue overdue |
+| Open issues (inference-sim/sim2real) | **46** |
+| Open issues (kalantar-msb/softr) | ~30+ issues + 16 PRs |
+| Hold queue (sim2real) | **0 PRs** (pipeline stalled Day 3) |
+| Hold queue (softr) | **16 PRs** (0 merges ever) |
+| softr PRs merged | **0** (3 closed without merge) |
+| sim2real last merge | **Jul 30** (PR#809) — 2 days ago |
+| CI test coverage (sim2real) | ~97% |
 | Pipeline stage | Step 5 complete; step 6 not started |
-| sim2real v0.1.0 status | **OVERDUE** — all prereqs on main since Jul 30, no tag |
-| softr v0.9.0 status | **Blocked** — 0 PRs merged, all criteria unmet |
-| sim2real branches | **100 branches** (~75 orphaned worktree-issue-* branches) |
+| sim2real v0.1.0 status | **3 DAYS OVERDUE** — tag not cut |
+| softr v0.9.0 status | **Blocked** — 0 merges, 21 days stagnant |
+| sim2real branches | **155 branches** (75+ orphaned worktree-issue-*) |
 
-### sim2real — What Changed in Cycle 6 (vs Cycle 5)
+### sim2real — What Changed in Cycle 7 (vs Cycle 6)
 
-❌ **PR pipeline stalled (day 2 outage):**
-- 0 open PRs in sim2real (all previous PRs merged or closed)
-- 100 branches exist: 25 guide/, 4 architect/, 3 quality/, 6 ci/, 3 scanner/, 3 sec/
-- All Jul 30 agent work is stranded in branches — TLS watcher issue (#782) blocks PR creation
+❌ **PR pipeline still stalled (day 3 outage):**
+- Branch count grew: 100 → 155 branches (55 new branches pushed, 0 new PRs)
+- TLS watcher issue (#782) unresolved for 3rd consecutive day
+- v0.1.0 release window closing — risk of being superseded by later work
 
 ✅ **Already landed on main (before the stall):**
 - PR#728 — ROADMAP.md (strategist)
@@ -64,9 +70,9 @@ pipeline.
 
 ✅ **Issues closed:** #786 (TLS delivery stall resolved), #672, #719, #805, #807
 
-### softr — Governance Crisis
+### softr — Governance Crisis (Day 21)
 
-❌ **Zero merges in project lifetime.** All 3 "closed" PRs were discarded without merge:
+❌ **Zero merges in project lifetime — now 21 days since initial commit.** All 3 "closed" PRs were discarded without merge:
 - PR#36 (`scanner/fix-data-race`) — closed 2026-07-30, NOT merged
 - PR#40 (`ci/add-go-ci-workflow`) — closed 2026-07-30, NOT merged
 - PR#63 (`ci/add-basic-workflow`) — closed 2026-07-30, NOT merged
@@ -74,14 +80,15 @@ pipeline.
 **Current main branch is identical to the July 14 initial commit.**
 No CI, no CONTRIBUTING.md, no ROADMAP.md, no go.mod, no CHANGELOG.
 README still references non-existent `scripts/` directory.
+softr now has 16 branches pushed (up from 13), still 0 merged.
 
 **Critical blockers before any softr roadmap horizon is achievable:**
 
-1. **Hold queue triage sprint** — 13 open softr PRs need human review.
+1. **Hold queue triage sprint** — 16 open softr PRs need human review.
    Start with: PR#37 (security), PR#19 (data-race), PR#46 (CONTRIBUTING.md).
    See softr#57.
 
-2. **Define SURGE exit criteria for softr** — 5 cycles with 0 merges.
+2. **Define SURGE exit criteria for softr** — 7 cycles with 0 merges.
    Without a review cadence, agent work has zero delivery. See softr#53.
 
 3. **Add hold label to PR#68** — guide PR opened without required hold label.
@@ -91,6 +98,21 @@ README still references non-existent `scripts/` directory.
 
 5. **Fix softr governor tracking** — `kalantar-msb/softr` may still be
    miscounted in SURGE metrics. See softr#55.
+
+---
+
+## ⚡ IMMEDIATE HUMAN ACTION REQUIRED
+
+These items are **blocked on human action** and cannot be resolved by agents at ACMM L1:
+
+| Priority | Action | Reason |
+|----------|--------|--------|
+| 🔴 P0 | **Fix ACMM level** — elevate from L1 to allow agent writes | Root cause of all throughput failures |
+| 🔴 P0 | **Cut sim2real v0.1.0 release tag** | 3 days overdue; all prereqs on main |
+| 🔴 P0 | **Resolve TLS watcher issue #782** | PR pipeline stalled Day 3 |
+| 🔴 P0 | **Review 1+ softr PR** — break the zero-merge deadlock | 21 days with no code review |
+| 🟠 P1 | **Add hold label to softr PR#68** | Policy violation |
+| 🟠 P1 | **Close softr PR#10** | Stale, superseded by #15 |
 
 ---
 
@@ -114,15 +136,15 @@ README still references non-existent `scripts/` directory.
 
 | Item | Status | Issue |
 |------|--------|-------|
-| Define SURGE exit criteria / review cadence | ❌ No action | softr#53 |
-| Hold queue triage (13 softr PRs) | ❌ 0 merges | softr#57 |
+| Define SURGE exit criteria / review cadence | ❌ No action (7 cycles) | softr#53 |
+| Hold queue triage (16 softr PRs) | ❌ 0 merges (21 days) | softr#57 |
 | Fix softr repo in hive governor tracking | ❌ Still open | softr#55 |
 | Close stale ROADMAP PR#10 | ❌ Still open | softr#28 |
-| Create CONTRIBUTING.md for softr | ❌ PR#46 waiting (13+ days) | softr#45 |
+| Create CONTRIBUTING.md for softr | ❌ PR#46 waiting (18+ days) | softr#45 |
 | Add Go CI workflow | ❌ PR#56 waiting; PR#40 discarded | softr#39 |
-| Remove internal hostnames from baseline.yaml | ❌ PR#37 waiting | softr#35 |
-| Fix data race in ComputeLimit | ❌ PR#19 waiting | softr#17 |
-| Add hold label to PR#68 (guide) | ❌ Policy violation | — |
+| Remove internal hostnames from baseline.yaml | ❌ PR#37 waiting (18+ days) | softr#35 |
+| Fix data race in ComputeLimit | ❌ PR#19 waiting (18+ days) | softr#17 |
+| Add hold label to PR#68 (guide) | ❌ Policy violation (unresolved) | — |
 
 ---
 
@@ -314,9 +336,9 @@ The following branches contain agent work that needs PRs opened:
 
 ---
 
-## Appendix B: softr PR Hold Queue — *Cycle 6 Update (0 merges, 18 days)*
+## Appendix B: softr PR Hold Queue — *Cycle 7 Update (0 merges, 21 days)*
 
-13 PRs are open on softr. Zero have been merged. **18 days since initial commit with no code changes.**
+16 PRs are open on softr. Zero have been merged. **21 days since initial commit with no code changes.**
 
 | PR | Branch | Type | Status | Suggested action |
 |----|--------|------|--------|-----------------|
@@ -333,12 +355,13 @@ The following branches contain agent work that needs PRs opened:
 | #65 | sec/fix-go-sum | security | ⏳ 18+ days | Review and merge |
 | #66 | ci/add-algorithm-tests | CI | ⏳ 18+ days | Review and merge |
 | #68 | guide/docs-results-directory | docs | ❌ **NO HOLD LABEL** | Add hold label FIRST; then review |
+| Additional branches (3) | guide/*, arch/*, ci/* | various | ⏳ New | Need PR creation when TLS watcher fixed |
 
 **Discarded (closed without merge):** PR#36 (data-race), PR#40 (CI workflow), PR#63 (CI workflow)
 
-**Priority order (cycle 6):**
+**Priority order (cycle 7 — same as cycle 6, no progress):**
 1. **PR#68** — Add `hold` label immediately (governance: agent PR without hold label)
-2. **PR#37, PR#19** — Security fixes (data race, info disclosure)
+2. **PR#37, PR#19** — Security fixes (data race, info disclosure) — 21 days waiting
 3. **PR#10** — Close (stale, superseded by #15)
 4. **PR#65** — go.sum integrity
 5. **PR#56, PR#66** — CI fixes (build/vet, algorithm tests)
