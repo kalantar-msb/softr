@@ -1,7 +1,7 @@
 # Roadmap — sim2real Pipeline & softr Experiment Suite
 
 > **Filed by:** strategist agent (ACMM L5 — hold-gated mode)  
-> **Date:** 2026-07-31 (cycle 5 update; original: 2026-07-29)  
+> **Date:** 2026-08-01 (cycle 6 update; original: 2026-07-29)  
 > **Status:** Draft — human review required before merge
 
 This document maps the current backlog to three planning horizons. It is
@@ -11,43 +11,55 @@ pipeline.
 
 ---
 
-## Current State (as of 2026-07-31, cycle 5)
+## Current State (as of 2026-08-01, cycle 6)
 
-> **⚠️ CRITICAL (softr):** After 5 agent cycles, **zero PRs have been merged** into
-> `kalantar-msb/softr` main. Three PRs (PR#36, PR#40, PR#63) were closed WITHOUT
-> merging. The main branch is unchanged since the initial commit on July 14.
-> All 13 open PRs remain hold-gated. See softr governance crisis below.
+> **🚨 CRITICAL (sim2real):** The PR pipeline is in a **day-2 outage**.
+> The hive PR-request watcher TLS cert issue (issue #782) remains unresolved.
+> **0 PRs are open** despite 100 branches with agent work. 48+ hours with no PR
+> creation. 75+ worktree-issue-* branches are orphaned.
 
-> **✅ sim2real is actively merging:** 20+ commits since 2026-07-30. ROADMAP.md
-> (#728) and CONTRIBUTING.md (#729) merged. 9 of 16 hold PRs merged. Security
-> hardening and quality test coverage both advancing rapidly.
+> **🚨 CRITICAL (sim2real):** **v0.1.0 is overdue.** All prerequisites landed
+> on main 2 days ago (Jul 30: ROADMAP.md, CONTRIBUTING.md, security hardening,
+> CI coverage ≥97%). The only remaining step is a human cutting the release tag.
+
+> **⚠️ CRITICAL (softr):** After 6 agent cycles, **zero PRs have been merged** into
+> `kalantar-msb/softr` main. The repo has had **zero substantive code changes since
+> initial commit on July 14 (18 days)**. All 13 open PRs remain hold-gated.
+
+> **⚠️ ADVISORY MODE:** Strategist is operating at ACMM L1 (ADVISORY) — cannot
+> create GitHub issues or PRs directly. All findings documented as beads only.
 
 | Signal | Value |
 |--------|-------|
 | Governor mode | SURGE (persistent since ≥2026-07-27) |
-| Open issues (inference-sim/sim2real) | ~41 |
-| Open issues (kalantar-msb/softr) | ~40+ (of which 0 pure issues; all PRs) |
-| Hold queue (sim2real) | ~7 hold PRs remaining (9 of 16 merged) |
+| Open issues (inference-sim/sim2real) | ~46 |
+| Open issues (kalantar-msb/softr) | ~34 issues + 13 PRs |
+| Hold queue (sim2real) | **0 PRs** (all closed/merged — pipeline stalled) |
 | Hold queue (softr) | **13 PRs** (12 hold-gated + PR#68 no-hold) |
-| Agent token burn | **$2,494 total** / **$53/hr avg** / **$217/hr current** |
 | softr PRs merged | **0** (3 PRs closed without merge) |
-| sim2real PRs merged (since Jul 30) | **9+** (ROADMAP, CONTRIBUTING, security, quality) |
-| Commit velocity (sim2real) | ~40+ commits / 30 days |
-| CI test coverage (sim2real) | ~97% (quality agent delivering tests) |
+| sim2real PRs merged (since Jul 30) | **20+** (ROADMAP, CONTRIBUTING, security, quality) |
+| sim2real last merge | Jul 31 (PR#809) |
+| Commit velocity (sim2real) | 800+ total commits, pipeline functional |
+| CI test coverage (sim2real) | ~97% (quality agent delivered) |
 | Pipeline stage | Step 5 complete; step 6 not started |
-| sim2real v0.1.0 status | **Prerequisites met** — CONTRIBUTING, ROADMAP, LICENSE merged |
+| sim2real v0.1.0 status | **OVERDUE** — all prereqs on main since Jul 30, no tag |
 | softr v0.9.0 status | **Blocked** — 0 PRs merged, all criteria unmet |
+| sim2real branches | **100 branches** (~75 orphaned worktree-issue-* branches) |
 
-### sim2real — What Changed in Cycle 5
+### sim2real — What Changed in Cycle 6 (vs Cycle 5)
 
-✅ **Merged since 2026-07-30:**
+❌ **PR pipeline stalled (day 2 outage):**
+- 0 open PRs in sim2real (all previous PRs merged or closed)
+- 100 branches exist: 25 guide/, 4 architect/, 3 quality/, 6 ci/, 3 scanner/, 3 sec/
+- All Jul 30 agent work is stranded in branches — TLS watcher issue (#782) blocks PR creation
+
+✅ **Already landed on main (before the stall):**
 - PR#728 — ROADMAP.md (strategist)
 - PR#729 — CONTRIBUTING.md + LICENSE (strategist)
-- PR#784 — RBAC: drop pods:get from ClusterRole (sec-check)
-- PR#763 — Pin Helm to v4.2.3 in Dockerfile (sec-check)
-- PR#765 — Pin anthropics/claude-plugins (sec-check)
-- PR#747, #748, #755, #758 — scanner fixes (stale go.work, subprocess timeouts, docs)
-- PR#750, #801 — quality test coverage (+49 new tests)
+- PR#809 — Security: remove dead data-pvc-explorer manifest
+- Multiple security hardening PRs: SHA-pinned Actions (#691, #660, #647, #765, #795)
+- RBAC: subprocess timeouts (#694), non-root Dockerfile (#647)
+- Quality: 75+ new tests (#787, #801), CI test coverage ≥97%
 - PR#772 — layout.repo_root() consolidation (architect)
 
 ✅ **Issues closed:** #786 (TLS delivery stall resolved), #672, #719, #805, #807
@@ -282,60 +294,56 @@ agent. These are instant merges once GitHub App install is complete.
 
 ---
 
-## Appendix A: Hold Queue Classification (sim2real) — *Updated Cycle 5*
+## Appendix A: Hold Queue Classification (sim2real) — *Updated Cycle 6*
 
-9 of 16 original hold PRs have now been merged. Remaining open items:
+**Status (2026-08-01): 0 OPEN PRs.** All previous PRs are closed or merged.
+New PRs cannot be opened until the TLS watcher issue (#782) is resolved.
 
-| Issue | Title (short) | Horizon | Suggested action |
-|-------|--------------|---------|-----------------|
-| #207 | Move size probe before dispatch | H1 | Remove hold, assign |
-| #262 | GPU capacity: multi-GPU fragmentation | H1 | Remove hold, assign |
-| #263 | Capacity probe workload tolerations | H1 | Remove hold, assign |
-| #270 | Capacity probe acceleratorType.labelValues | H1 | Remove hold, assign |
-| #271 | Capacity probe silent on misspelled keys | H1 | Remove hold, assign |
-| #305 | Per-pod calibration phase | H2 | Keep hold, needs design |
-| #306 | Wire calibration into pipeline | H2 | Keep hold, needs design |
-| #376 | Warn stale orchestrator image | H3 | Keep hold, exploratory |
-| #450 | Periodic saves clobber ConfigMap edits | H1 | Remove hold, assign |
-| #487 | sim2real-check skill review pass | H2 | Keep hold, after #534 |
-| #534 | Epic: step-6 validate/execute | H2 | Keep hold, needs design |
-| #550 | llm-d-rbac fragment doc/code gap | H1 doc | Remove hold, assign |
-| #553 | Data PVC path collision | H3 | Keep hold, exploratory |
-| #554 | Auto-prune stale progress-dict entries | H1 | Remove hold, assign |
-| #567 | Classify infra-caused PipelineRun failures | H1 | Remove hold, assign |
-| #592 | Round-trip test | H2 | Keep hold, after step-6 |
+The following branches contain agent work that needs PRs opened:
+- **guide/** (25 branches): docs updates pushed Jul 30, waiting for PR creation
+- **architect/** (4 branches): refactoring work pushed Jul 30
+- **quality/** (3 branches): additional test coverage
+- **ci/** (6 branches): CI fixes
+- **scanner/** (1 branch): RBAC fixes
+- **sec/** (3 branches): security fixes
 
-**Merged from hold queue (cycle 5):** PR#728, #729, #784, #763, #765, #747, #748, #755, #758
-
-**Recommended hold removals (Horizon 1 items):** #207, #262, #263, #270, #271,
-#450, #554, #567 — well-scoped, confirmed root causes.
+**Recommended actions (human required):**
+1. Fix TLS cert issue (#782) to unblock PR watcher — OR — manually open PRs from branches
+2. Cut v0.1.0 release tag on sim2real — all prereqs are on main
+3. For holdfromhive issues: Remove hold from H1 items #207, #262, #263, #270, #271, #450, #554, #567
 
 ---
 
-## Appendix B: softr PR Hold Queue — *Cycle 5 Update (0 merges)*
+## Appendix B: softr PR Hold Queue — *Cycle 6 Update (0 merges, 18 days)*
 
-13 PRs are open on softr. Zero have been merged. Three were discarded.
+13 PRs are open on softr. Zero have been merged. **18 days since initial commit with no code changes.**
 
 | PR | Branch | Type | Status | Suggested action |
 |----|--------|------|--------|-----------------|
-| #3 | guide/docs-sim2real-pipeline-status | docs | ⏳ 13+ days | Review and merge |
-| #10 | strategy/roadmap-v1 | planning (STALE) | ⏳ 13+ days | **Close** — superseded by #15 |
-| #15 | strategy/roadmap | planning | ⏳ 13+ days | Review (this document) |
-| #19 | sec/fix-data-race | security | ⏳ 13+ days | Review and merge |
-| #31 | arch/refactor-interface-consistency | refactor | ⏳ 13+ days | Review and merge |
-| #32 | arch/refactor-readme-file-structure | docs/refactor | ⏳ 13+ days | Review and merge |
-| #37 | scanner/fix-info-disclosure | security | ⏳ 13+ days | Review and merge |
-| #43 | guide/docs-reproduction-instructions | docs | ⏳ 13+ days | Review and merge |
-| #46 | guide/docs-contributing | docs | ⏳ 13+ days | Review and merge |
-| #56 | ci/fix-false-green-build-vet | CI | ⏳ open | Review and merge |
-| #65 | sec/fix-go-sum | security | ⏳ open | Review and merge |
-| #66 | ci/add-algorithm-tests | CI | ⏳ open | Review and merge |
-| #68 | guide/docs-results-directory | docs | ❌ NO HOLD LABEL | Add hold label; review |
+| #3 | guide/docs-sim2real-pipeline-status | docs | ⏳ 18+ days | Review and merge |
+| #10 | strategy/roadmap-v1 | planning (STALE) | ⏳ 18+ days | **Close** — superseded by #15 |
+| #15 | strategy/roadmap | planning | ⏳ 18+ days | Review (this document, updated) |
+| #19 | sec/fix-data-race | security | ⏳ 18+ days | Review and merge |
+| #31 | arch/refactor-interface-consistency | refactor | ⏳ 18+ days | Review and merge |
+| #32 | arch/refactor-readme-file-structure | docs/refactor | ⏳ 18+ days | Review and merge |
+| #37 | scanner/fix-info-disclosure | security | ⏳ 18+ days | Review and merge |
+| #43 | guide/docs-reproduction-instructions | docs | ⏳ 18+ days | Review and merge |
+| #46 | guide/docs-contributing | docs | ⏳ 18+ days | Review and merge |
+| #56 | ci/fix-false-green-build-vet | CI | ⏳ 18+ days | Review and merge |
+| #65 | sec/fix-go-sum | security | ⏳ 18+ days | Review and merge |
+| #66 | ci/add-algorithm-tests | CI | ⏳ 18+ days | Review and merge |
+| #68 | guide/docs-results-directory | docs | ❌ **NO HOLD LABEL** | Add hold label FIRST; then review |
 
 **Discarded (closed without merge):** PR#36 (data-race), PR#40 (CI workflow), PR#63 (CI workflow)
 
-**Priority order:** PR#68 (add hold label FIRST), PR#37 (security), PR#19 (security/data-race),
-PR#10 (close — stale), PR#46 (CONTRIBUTING.md), PR#56 (CI), then docs PRs.
+**Priority order (cycle 6):**
+1. **PR#68** — Add `hold` label immediately (governance: agent PR without hold label)
+2. **PR#37, PR#19** — Security fixes (data race, info disclosure)
+3. **PR#10** — Close (stale, superseded by #15)
+4. **PR#65** — go.sum integrity
+5. **PR#56, PR#66** — CI fixes (build/vet, algorithm tests)
+6. **PR#46** — CONTRIBUTING.md
+7. Remaining docs PRs (#3, #32, #43)
 
 ---
 
